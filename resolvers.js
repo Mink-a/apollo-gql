@@ -12,9 +12,19 @@ export const resolvers = {
       return null;
     },
   },
+  Wand: {
+    length: (parent, args, context)=> parent.length ?? 0
+  },
   Query: {
     students: () => characters.filter((character) => !character.courses),
     professors: () => characters.filter((character) => !character.parent_blood),
     characters: () => characters,
   },
+  Mutation: {
+    addStudent: (parent, args, context) => {
+      const data = {...args.data}
+      characters.push(data);
+      return data;
+    }
+  }
 };

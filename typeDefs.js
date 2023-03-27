@@ -35,4 +35,13 @@ export const typeDefs = `
     professors: [Professor]
     characters: [Character]
   }
+
+  input StudentInput {
+    name: String
+    house: String
+  }
+
+  type Mutation {
+    addStudent(data: StudentInput): Student
+  }
 `;

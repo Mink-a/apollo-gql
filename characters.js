@@ -21,7 +21,7 @@ export const characters = [
     name: "Ron Weasley",
     house: "Gryffindor",
     occupation: "Wizard, Auror",
-    wand: { wood: "Willow", core: "Unicorn tail hair", length: 14 },
+    wand: { wood: "Willow", core: "Unicorn tail hair"},
     patronus: "Jack Russell Terrier",
     image_url: "https://i.imgur.com/vHw5p4K.jpg",
     parent_blood: "wizard",
