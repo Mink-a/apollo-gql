@@ -1,4 +1,4 @@
-import { characters } from "./characters.js";
+import { prisma } from "./db.js";
 
 export const resolvers = {
   Character: {
@@ -13,18 +13,24 @@ export const resolvers = {
     },
   },
   Wand: {
-    length: (parent, args, context)=> parent.length ?? 0
+    length: (parent, args, context) => parent.length ?? 0,
   },
   Query: {
-    students: () => characters.filter((character) => !character.courses),
-    professors: () => characters.filter((character) => !character.parent_blood),
-    characters: () => characters,
+    students: () => prisma.student.findMany(),
+    professors: () => prisma.professor.findMany(),
+    characters: async () => {
+      const students = await prisma.student.findMany();
+      const professors = await prisma.professor.findMany();
+      return students.concat(professors);
+    },
   },
   Mutation: {
-    addStudent: (parent, args, context) => {
-      const data = {...args.data}
-      characters.push(data);
-      return data;
-    }
-  }
+    addStudent: async (parent, args, context) => {
+      const { data } = args;
+      const student = await prisma.student.create({
+        data,
+      });
+      return student;
+    },
+  },
 };

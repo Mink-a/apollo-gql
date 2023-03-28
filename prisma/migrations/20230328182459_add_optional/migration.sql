@@ -1,0 +1,10 @@
+-- AlterTable
+ALTER TABLE "Professor" ALTER COLUMN "occupation" DROP NOT NULL,
+ALTER COLUMN "patronus" DROP NOT NULL,
+ALTER COLUMN "image_url" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "Student" ALTER COLUMN "occupation" DROP NOT NULL,
+ALTER COLUMN "patronus" DROP NOT NULL,
+ALTER COLUMN "image_url" DROP NOT NULL,
+ALTER COLUMN "parent_blood" DROP NOT NULL;
